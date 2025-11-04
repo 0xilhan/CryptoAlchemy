@@ -3,14 +3,14 @@ import type { Thread, SocialLink, Announcement } from './types';
 import { XLogo, DiscordLogo } from './components/icons';
 
 export const FEATURED_THREADS: Thread[] = [
-  { id: 1, title: 'Deep Dive into EIP-4844: Proto-Danksharding Explained', tag: 'Ethereum', url: 'https://x.com/' },
+  { id: 1, title: 'How $CRC is trying to make possible the core mission of Bitcoin', tag: 'Bitcoin', url: 'https://x.com/cryptoalchemy29/status/1967625717329379833' },
   { id: 2, title: 'The Ultimate Guide to On-Chain Privacy with ZK-SNARKs', tag: 'Privacy', url: 'https://x.com/' },
   { id: 3, title: 'How Liquid Staking is Reshaping DeFi Yield Strategies', tag: 'DeFi', url: 'https://x.com/' },
   { id: 4, title: 'Airdrop Farming Masterclass: Techniques & Security', tag: 'Strategy', url: 'https://x.com/' },
 ];
 
 export const YOUTUBE_SHORTS_IDS: string[] = [
-  'LXb3EKWsInQ',
+  'https://www.youtube.com/watch?v=cLwZTaOnUj0&t=855s',
   '3JZ_D3pSS4U',
   'L_jWHffIx5E',
   't_S_cN2re4E',
@@ -26,9 +26,9 @@ export const ANNOUNCEMENTS: Announcement[] = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-    { id: 1, name: 'X', url: 'https://x.com/', icon: XLogo, color: '#FFFFFF' },
-    { id: 2, name: 'YouTube', url: 'https://youtube.com', icon: Youtube, color: '#FF0000' },
-    { id: 3, name: 'Discord', url: '#', icon: DiscordLogo, color: '#5865F2' },
-    { id: 4, name: 'Farcaster', url: '#', icon: Rss, color: '#8A63D2' },
-    { id: 5, name: 'Email', url: 'mailto:hello@example.com', icon: Mail, color: '#C7A94A' },
+    { id: 1, name: 'X', url: 'https://x.com/cryptoalchemy29', icon: XLogo, color: '#FFFFFF' },
+    { id: 2, name: 'YouTube', url: 'https://youtube.com/@cryptoalchemy29', icon: Youtube, color: '#FF0000' },
+    { id: 3, name: 'Discord', url: 'https://discord.gg/uzBWHaNGen', icon: DiscordLogo, color: '#5865F2' },
+    { id: 4, name: 'Farcaster', url: 'https://farcaster.xyz/ilhanx29', icon: Rss, color: '#8A63D2' },
+    { id: 5, name: 'Email', url: 'mailto:mail.ilhanx29@gmail.com', icon: Mail, color: '#C7A94A' },
 ];
