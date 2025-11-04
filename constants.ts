@@ -4,13 +4,13 @@ import { XLogo, DiscordLogo } from './components/icons';
 
 export const FEATURED_THREADS: Thread[] = [
   { id: 1, title: 'How $CRC is trying to make possible the core mission of Bitcoin', tag: 'Bitcoin', url: 'https://x.com/cryptoalchemy29/status/1967625717329379833' },
-  { id: 2, title: 'The Ultimate Guide to On-Chain Privacy with ZK-SNARKs', tag: 'Privacy', url: 'https://x.com/' },
+  { id: 2, title: 'Grinding for Airdrops, but NO WIN-WIN ?? 😔 Here is the remedy', tag: 'Smart Grinding', url: 'https://x.com/cryptoalchemy29/status/1753305066721964283' },
   { id: 3, title: 'How Liquid Staking is Reshaping DeFi Yield Strategies', tag: 'DeFi', url: 'https://x.com/' },
   { id: 4, title: 'Airdrop Farming Masterclass: Techniques & Security', tag: 'Strategy', url: 'https://x.com/' },
 ];
 
 export const YOUTUBE_SHORTS_IDS: string[] = [
-  'https://www.youtube.com/watch?v=cLwZTaOnUj0&t=855s',
+  'cLwZTaOnUj0&t=855s',
   '3JZ_D3pSS4U',
   'L_jWHffIx5E',
   't_S_cN2re4E',
