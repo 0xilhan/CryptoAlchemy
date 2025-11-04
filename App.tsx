@@ -10,6 +10,9 @@ import CoursesSection from './components/CoursesSection';
 import ConnectSection from './components/ConnectSection';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import { CartProvider } from './contexts/CartContext';
+import CartModal from './components/CartModal';
+import CheckoutModal from './components/CheckoutModal';
 
 function App() {
   const [auraPosition, setAuraPosition] = React.useState({ x: 0, y: 0 });
@@ -25,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <CartProvider>
       <CustomCursor />
       <div className="aura" />
       <div className="bg-[#0D0D0D] text-white selection:bg-[#c7a94a] selection:text-[#0D0D0D]">
@@ -42,7 +45,9 @@ function App() {
         </main>
         <Footer />
       </div>
-    </>
+      <CartModal />
+      <CheckoutModal />
+    </CartProvider>
   );
 }
 

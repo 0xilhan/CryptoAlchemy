@@ -22,22 +22,24 @@ export interface Announcement {
   icon: string;
 }
 
-// FIX: Add missing type definitions for e-commerce functionality.
 export interface Product {
   id: string;
   name: string;
   price: number;
+  description: string;
+  icon: LucideIcon;
 }
 
 export interface Course {
   id: string;
   name: string;
   price: number;
+  description: string;
+  outcomes: string[];
+  thumbnailUrl: string;
 }
 
-export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
+export interface CartItem extends Omit<Product & Course, 'icon' | 'outcomes' | 'thumbnailUrl' | 'description'> {
   quantity: number;
+  type: 'product' | 'course';
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { AlchemyLogo } from './icons';
+import { useCart } from '../contexts/CartContext';
+import { ShoppingBag } from 'lucide-react';
 
 const navLinks = [
   { name: 'Threads', href: '#threads' },
@@ -13,6 +15,8 @@ const navLinks = [
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { cartCount, openCart } = useCart();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +25,14 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  useEffect(() => {
+    if (cartCount > 0) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => setIsAnimating(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -56,21 +68,32 @@ const Header: React.FC = () => {
             <span className="font-space-grotesk font-bold text-xl text-white">Crypto Alchemy</span>
           </a>
 
-          <nav className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="text-[#9CA3AF] hover:text-white transition-colors duration-200 relative group"
-                data-cursor-hover
-              >
-                {link.name}
-                <span className="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-[#C7A94A] transition-all duration-200 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-
+          <div className="flex items-center gap-6">
+            <nav className="hidden md:flex items-center space-x-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className="text-[#9CA3AF] hover:text-white transition-colors duration-200 relative group"
+                  data-cursor-hover
+                >
+                  {link.name}
+                  <span className="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-[#C7A94A] transition-all duration-200 group-hover:w-full"></span>
+                </a>
+              ))}
+            </nav>
+            <button onClick={openCart} className="relative text-[#9CA3AF] hover:text-white transition-colors" data-cursor-hover>
+              <ShoppingBag className="w-6 h-6" />
+              {cartCount > 0 && (
+                <span className={`absolute -top-2 -right-2 bg-[#C7A94A] text-[#0D0D0D] text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center
+                  ${isAnimating ? 'animate-bounce' : ''}
+                `}>
+                  {cartCount}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </motion.header>

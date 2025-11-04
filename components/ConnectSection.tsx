@@ -67,19 +67,19 @@ const ConnectSection: React.FC = () => {
             <motion.div
               key={link.id}
               variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -5 }}
-              transition={{ type: "spring", stiffness: 350, damping: 15 }}
             >
               <a
                 href={link.url}
                 onClick={link.name === 'Donate' ? (e) => { e.preventDefault(); setIsModalOpen(true); } : undefined}
-                target={link.name === 'Donate' ? '_self' : '_blank'}
+                target={link.name === 'Donate' || link.name === 'Email' ? '_self' : '_blank'}
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center justify-center p-6 bg-[#161618] border border-gray-800 rounded-2xl h-full transition-colors duration-200 hover:bg-gray-800/70"
+                className="group block bg-[#161618] border border-gray-800 rounded-2xl h-full transition-all duration-300 hover:border-gray-700 hover:-translate-y-1"
                 data-cursor-hover
               >
-                <link.icon className="w-10 h-10 mb-4 transition-colors duration-300" style={{ color: link.color }} />
-                <span className="font-semibold text-white transition-colors duration-300">{link.name}</span>
+                <div className="p-6 flex flex-col items-center justify-center text-center">
+                  <link.icon className="w-10 h-10 mb-4 transition-transform duration-300 group-hover:scale-110" style={{ color: link.color }} />
+                  <span className="font-semibold text-white transition-colors duration-300">{link.name}</span>
+                </div>
               </a>
             </motion.div>
           ))}

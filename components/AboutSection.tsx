@@ -1,3 +1,4 @@
+
 // FIX: Removed extraneous file markers from the top of the file.
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -73,12 +74,19 @@ const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ type: 'spring', stiffness: 100, damping: 25 }}
+            style={{ perspective: '1000px' }}
           >
-            <div className="relative">
+            <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
               <motion.div
-                animate={{ rotate: 360 }}
+                animate={{ rotateY: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
               >
+                {/* 
+                  FUTURE ENHANCEMENT: 
+                  This is the spot to replace the 2D SVG logo with your 3D model.
+                  You could use a library like React Three Fiber and import your GLB/GLTF model component here.
+                  Example: <Your3DLogoModel />
+                */}
                 <AlchemyLogo className="w-64 h-64 text-[#C7A94A]" />
               </motion.div>
               <motion.div 

@@ -3,7 +3,7 @@ import type { CartItem, Product, Course } from '../types';
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (item: Product | Course) => void;
+  addToCart: (item: Product | Course, type: 'product' | 'course') => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -41,7 +41,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
   const closeCheckout = () => setIsCheckoutOpen(false);
 
-  const addToCart = (itemToAdd: Product | Course) => {
+  const addToCart = (itemToAdd: Product | Course, type: 'product' | 'course') => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === itemToAdd.id);
       if (existingItem) {
@@ -49,7 +49,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevItems, { ...itemToAdd, quantity: 1 }];
+      const { description, icon, outcomes, thumbnailUrl, ...rest } = itemToAdd as any;
+      return [...prevItems, { ...rest, quantity: 1, type }];
     });
     openCart();
   };
