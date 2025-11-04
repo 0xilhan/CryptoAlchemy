@@ -30,10 +30,21 @@ const ThreadCard: React.FC<{ thread: Thread }> = ({ thread }) => {
       variants={cardVariants}
       whileHover={{ y: -8, scale: 1.04 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 relative overflow-hidden group transition-all duration-300 hover:border-[#C7A94A]/80 hover:shadow-[0_0_25px_rgba(199,169,74,0.3)]"
+      className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-[#C7A94A]/80 hover:shadow-[0_0_25px_rgba(199,169,74,0.3)] flex flex-col"
     >
       <div className="absolute -top-1 -left-1 w-1/2 h-1/2 bg-gradient-to-br from-[#c7a94a]/30 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div className="relative z-10 flex flex-col h-full">
+      
+      {thread.thumbnailUrl && (
+        <div className="aspect-video overflow-hidden">
+          <img 
+            src={thread.thumbnailUrl} 
+            alt={thread.title} 
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      )}
+
+      <div className="relative z-10 flex flex-col h-full p-6 flex-grow">
         <span className="bg-[#c7a94a]/20 text-[#c7a94a] text-xs font-bold px-3 py-1 rounded-full self-start">{thread.tag}</span>
         <h3 className="font-space-grotesk text-xl font-bold mt-4 flex-grow">{thread.title}</h3>
         <a href={thread.url} target="_blank" rel="noopener noreferrer" className="mt-6 text-[#4BD0FF] font-semibold self-start hover:underline">
