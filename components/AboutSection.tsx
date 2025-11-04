@@ -67,7 +67,7 @@ const AboutSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right side image (rotating PNG) */}
+          {/* Right side image (rotating circular PNG) */}
           <motion.div
             className="flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -81,11 +81,10 @@ const AboutSection: React.FC = () => {
                 animate={{ rotateY: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
               >
-                {/* ✅ Replace with your image link */}
                 <img
                   src="https://pbs.twimg.com/profile_images/1954480691242057728/Fg8Nrt_U_400x400.jpg"
                   alt="Crypto Alchemy Logo"
-                  className="w-64 h-64 object-contain drop-shadow-[0_0_25px_rgba(199,169,74,0.5)]"
+                  className="w-64 h-64 object-cover rounded-full drop-shadow-[0_0_35px_rgba(199,169,74,0.7)] border-2 border-[#C7A94A]/40"
                 />
               </motion.div>
 
