@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Alchemy — On-Chain Clarity.</title>
+    <meta name="description" content="Threads, insights, and updates from the crypto storyteller.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        background-color: #0D0D0D;
+        color: #F3F4F6;
+        font-family: 'Inter', sans-serif;
+        cursor: none;
+        scrollbar-width: none; /* Firefox */
+      }
+      body::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+      }
+      .font-space-grotesk {
+        font-family: 'Orbitron', sans-serif;
+      }
+      .glow-cyan {
+        box-shadow: 0 0 5px #4BD0FF, 0 0 10px #4BD0FF, 0 0 15px #4BD0FF;
+      }
+      .glow-gold {
+        box-shadow: 0 0 5px #C7A94A, 0 0 10px #C7A94A, 0 0 15px #C7A94A;
+      }
+      .text-glow-cyan {
+        text-shadow: 0 0 3px #4BD0FF, 0 0 5px #4BD0FF;
+      }
+       .text-glow-gold {
+        text-shadow: 0 0 3px #C7A94A, 0 0 5px #C7A94A;
+      }
+      
+      /* Marquee styles */
+      .marquee-container {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+        mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+      }
+      .marquee {
+        display: flex;
+        flex-shrink: 0;
+        animation: marquee-scroll 40s linear infinite;
+      }
+      .marquee-container:hover .marquee {
+        animation-play-state: paused;
+      }
+      @keyframes marquee-scroll {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.552.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

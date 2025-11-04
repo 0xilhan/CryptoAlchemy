@@ -1,0 +1,75 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FEATURED_THREADS } from '../constants';
+import type { Thread } from '../types';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 100, damping: 20 },
+  },
+};
+
+const ThreadCard: React.FC<{ thread: Thread }> = ({ thread }) => {
+  return (
+    <motion.div
+      variants={cardVariants}
+      whileHover={{ y: -10, scale: 1.03 }}
+      transition={{ type: 'spring', stiffness: 300 }}
+      className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 relative overflow-hidden"
+    >
+      <div className="absolute -top-1 -left-1 w-1/2 h-1/2 bg-gradient-to-br from-[#c7a94a]/30 to-transparent blur-2xl"></div>
+      <div className="relative z-10 flex flex-col h-full">
+        <span className="bg-[#c7a94a]/20 text-[#c7a94a] text-xs font-bold px-3 py-1 rounded-full self-start">{thread.tag}</span>
+        <h3 className="font-space-grotesk text-xl font-bold mt-4 flex-grow">{thread.title}</h3>
+        <a href={thread.url} target="_blank" rel="noopener noreferrer" className="mt-6 text-[#4BD0FF] font-semibold self-start hover:underline">
+          Read on X →
+        </a>
+      </div>
+    </motion.div>
+  );
+};
+
+const FeaturedThreadsSection: React.FC = () => {
+  return (
+    <section id="threads" className="py-20 md:py-32 bg-[#0D0D0D] overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.h2 
+          className="font-space-grotesk text-4xl md:text-5xl font-bold text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+        >
+          📜 Featured Threads
+        </motion.h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {FEATURED_THREADS.map((thread) => (
+            <ThreadCard key={thread.id} thread={thread} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturedThreadsSection;
