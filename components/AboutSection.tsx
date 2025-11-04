@@ -87,7 +87,10 @@ const AboutSection: React.FC = () => {
                   You could use a library like React Three Fiber and import your GLB/GLTF model component here.
                   Example: <Your3DLogoModel />
                 */}
-                <AlchemyLogo className="w-64 h-64 text-[#C7A94A]" />
+                <img
+  src="https://pbs.twimg.com/profile_images/1954480691242057728/Fg8Nrt_U_400x400.jpg"
+  alt="Crypto Alchemy Logo"
+  className="w-64 h-64 object-contain drop-shadow-[0_0_25px_rgba(199,169,74,0.5)]"" />
               </motion.div>
               <motion.div 
                 className="absolute inset-0 border-2 border-[#4BD0FF]/50 rounded-full"
