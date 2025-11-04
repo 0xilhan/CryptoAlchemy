@@ -28,7 +28,7 @@ const wordVariants = {
   },
 };
 
-const tagline = "Empowering Crypto Self-Reliance: From Airdrops to Clear OnChain Stories";
+const tagline = "Empowering Crypto Self-Reliance.";
 
 const HeroSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
