@@ -6,6 +6,7 @@ export interface Thread {
   title: string;
   tag: string;
   url: string;
+  thumbnailUrl?: string;
 }
 
 export interface SocialLink {
