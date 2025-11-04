@@ -10,6 +10,8 @@ import ConnectSection from './components/ConnectSection';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
+import ProductsSection from './components/ProductsSection';
+import CoursesSection from './components/CoursesSection';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -33,6 +35,8 @@ export default function App() {
         <VideoSection />
         <AnnouncementsSection />
         <AboutSection />
+        <ProductsSection />
+        <CoursesSection />
         <ConnectSection />
       </main>
       <Footer />
