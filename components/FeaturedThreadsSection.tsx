@@ -35,7 +35,7 @@ const ThreadCard: React.FC<{ thread: Thread }> = ({ thread }) => {
       <div className="absolute -top-1 -left-1 w-1/2 h-1/2 bg-gradient-to-br from-[#c7a94a]/30 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       
       {thread.thumbnailUrl && (
-        <div className="aspect-video overflow-hidden">
+        <div className="aspect-[16/9] overflow-hidden">
           <img 
             src={thread.thumbnailUrl} 
             alt={thread.title} 
