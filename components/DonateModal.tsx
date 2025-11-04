@@ -24,9 +24,9 @@ const modalVariants = {
 };
 
 const addresses = [
-  { name: 'Bitcoin (BTC)', address: 'bc1qgr9z4n2hrpwn9t94w5tzf9snyy074k3p36p67d' },
-  { name: 'Ethereum (ETH, ERC20)', address: '0x384a2A2d775839F0042d74a38E316A795a128A41' },
-  { name: 'Solana (SOL)', address: 'SoL7dAbxmtm5s7Jb7dYyYXNodgJz8iLz7f8qTfVpGzK' }
+  { name: 'Bitcoin (BTC)', address: 'bc1qlnnrt7asu3n9mctx3xtk3f40t2ml89twkvwut4' },
+  { name: 'Ethereum (ETH, ERC20)', address: '0xe3c7F5B82b2040630d67475a8668698c4523D0b5' },
+  { name: 'Solana (SOL)', address: 'E66SsqnoX3sKAdrUGHCXVfAB4nUbg36vN5LzNiih7ipR' }
 ];
 
 const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
