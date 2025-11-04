@@ -28,7 +28,7 @@ const wordVariants = {
   },
 };
 
-const tagline = "Turning on-chain chaos into clarity — one thread at a time.";
+const tagline = "Empowering Crypto Self-Reliance: From Airdrops to Clear OnChain Stories";
 
 const HeroSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
