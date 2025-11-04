@@ -64,7 +64,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <a href="#hero" onClick={(e) => handleSmoothScroll(e, '#hero')} className="flex items-center gap-2 group" data-cursor-hover>
-            <AlchemyLogo className="w-8 h-8 text-[#C7A94A] transition-transform duration-300 group-hover:rotate-12" />
+            
             <span className="font-space-grotesk font-bold text-xl text-white">Crypto Alchemy</span>
           </a>
 
