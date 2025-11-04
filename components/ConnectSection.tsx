@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SOCIAL_LINKS } from '../constants';
 import type { SocialLink } from '../types';
 import DonateModal from './DonateModal';
-import { Heart } from 'lucide-react';
+import { Heart, Zap } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,71 +24,65 @@ const itemVariants = {
     transition: {
       type: 'spring',
       stiffness: 100,
+      damping: 25
     },
   },
 };
 
 const ConnectSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const donateLink: SocialLink = { id: 99, name: 'Donate', url: '#', icon: Heart, color: '#C7A94A' };
 
   return (
     <section id="connect" className="py-20 md:py-32 bg-black/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2
-          className="font-space-grotesk text-4xl md:text-5xl font-bold mb-4"
+          className="font-space-grotesk text-4xl md:text-5xl font-bold mb-4 flex items-center justify-center gap-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 25 }}
         >
-          ⚡ Join the Circle
+          <Zap className="w-10 h-10 text-yellow-400" />
+          Join the Circle
         </motion.h2>
         <motion.p
           className="text-lg md:text-xl text-[#9CA3AF] mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.2 }}
         >
           Follow my work, join the conversation, or reach out directly. Find me on your favorite platforms.
         </motion.p>
 
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {SOCIAL_LINKS.map((link: SocialLink) => (
-            <motion.a
+          {[...SOCIAL_LINKS, donateLink].map((link) => (
+            <motion.div
               key={link.id}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
               variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -8 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl transition-colors duration-300 hover:bg-gray-800/70"
-              data-cursor-hover
-              style={{ '--glow-color': link.color } as React.CSSProperties}
+              whileHover={{ scale: 1.03, y: -5 }}
+              transition={{ type: "spring", stiffness: 350, damping: 15 }}
             >
-              <link.icon className="w-10 h-10 mb-3 transition-all duration-300 group-hover:scale-110 group-hover:[filter:drop-shadow(0_0_10px_var(--glow-color))]" style={{ color: link.color }} />
-              <span className="font-semibold text-white transition-colors duration-300">{link.name}</span>
-            </motion.a>
+              <a
+                href={link.url}
+                onClick={link.name === 'Donate' ? (e) => { e.preventDefault(); setIsModalOpen(true); } : undefined}
+                target={link.name === 'Donate' ? '_self' : '_blank'}
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center justify-center p-6 bg-[#161618] border border-gray-800 rounded-2xl h-full transition-colors duration-200 hover:bg-gray-800/70"
+                data-cursor-hover
+              >
+                <link.icon className="w-10 h-10 mb-4 transition-colors duration-300" style={{ color: link.color }} />
+                <span className="font-semibold text-white transition-colors duration-300">{link.name}</span>
+              </a>
+            </motion.div>
           ))}
-           <motion.button
-              onClick={() => setIsModalOpen(true)}
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -8 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl transition-colors duration-300 hover:bg-gray-800/70"
-              data-cursor-hover
-              style={{ '--glow-color': '#C7A94A' } as React.CSSProperties}
-            >
-              <Heart className="w-10 h-10 mb-3 text-[#C7A94A] transition-all duration-300 group-hover:scale-110 group-hover:[filter:drop-shadow(0_0_10px_var(--glow-color))]" />
-              <span className="font-semibold text-white">Donate</span>
-            </motion.button>
         </motion.div>
       </div>
        <DonateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -40,6 +40,23 @@
         text-shadow: 0 0 3px #C7A94A, 0 0 5px #C7A94A;
       }
       
+      /* Aura styles */
+      .aura {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at var(--mouse-x, 0) var(--mouse-y, 0),
+          rgba(75, 208, 255, 0.15),
+          transparent 30vmax
+        );
+        z-index: 30;
+        transition: background 0.2s ease-out;
+      }
+
       /* Marquee styles */
       .marquee-container {
         display: flex;

@@ -1,3 +1,4 @@
+// FIX: Removed extraneous file markers from the top of the file.
 import React from 'react';
 import { motion } from 'framer-motion';
 import { YOUTUBE_SHORTS_IDS } from '../constants';
@@ -18,7 +19,7 @@ const itemVariants = {
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { type: 'spring', stiffness: 100, damping: 20 } 
+    transition: { type: 'spring', stiffness: 100, damping: 25, mass: 0.5 } 
   },
 };
 
@@ -31,7 +32,7 @@ const VideoSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 25 }}
         >
           🎥 Watch My Videos
         </motion.h2>
@@ -70,7 +71,7 @@ const VideoSection: React.FC = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.5 }}
         >
           <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" className="bg-transparent border-2 border-[#C7A94A] text-[#C7A94A] font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-[#C7A94A] hover:text-[#0D0D0D] hover:shadow-[0_0_20px_#C7A94A]">
             Watch All on YouTube

@@ -1,45 +1,49 @@
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
+import AnnouncementsSection from './components/AnnouncementsSection';
 import FeaturedThreadsSection from './components/FeaturedThreadsSection';
 import VideoSection from './components/VideoSection';
-import AnnouncementsSection from './components/AnnouncementsSection';
 import AboutSection from './components/AboutSection';
+import ProductsSection from './components/ProductsSection';
+import CoursesSection from './components/CoursesSection';
 import ConnectSection from './components/ConnectSection';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import LoadingScreen from './components/LoadingScreen';
-import ProductsSection from './components/ProductsSection';
-import CoursesSection from './components/CoursesSection';
 
-export default function App() {
-  const [loading, setLoading] = useState(true);
+function App() {
+  const [auraPosition, setAuraPosition] = React.useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000); 
-    return () => clearTimeout(timer);
+  React.useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setAuraPosition({ x: e.clientX, y: e.clientY });
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  if (loading) {
-    return <LoadingScreen />;
-  }
-
   return (
-    <div className="bg-[#0D0D0D] text-gray-100 antialiased selection:bg-[#c7a94a] selection:text-[#0D0D0D]">
+    <>
       <CustomCursor />
-      <Header />
-      <main>
-        <HeroSection />
-        <FeaturedThreadsSection />
-        <VideoSection />
-        <AnnouncementsSection />
-        <AboutSection />
-        <ProductsSection />
-        <CoursesSection />
-        <ConnectSection />
-      </main>
-      <Footer />
-    </div>
+      <div className="aura" />
+      <div className="bg-[#0D0D0D] text-white selection:bg-[#c7a94a] selection:text-[#0D0D0D]">
+        <Header />
+        <main>
+          <HeroSection />
+          <AnnouncementsSection />
+          <FeaturedThreadsSection />
+          <VideoSection />
+          <AboutSection />
+          <ProductsSection />
+          <CoursesSection />
+          <ConnectSection />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
+
+export default App;
