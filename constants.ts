@@ -30,5 +30,5 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { id: 2, name: 'YouTube', url: 'https://youtube.com/@cryptoalchemy29', icon: Youtube, color: '#FF0000' },
   { id: 3, name: 'Discord', url: 'https://discord.gg/uzBWHaNGen', icon: DiscordLogo, color: '#5865F2' },
   { id: 4, name: 'Farcaster', url: 'https://farcaster.xyz/ilhanx29', icon: Rss, color: '#8A63D2' },
-  { id: 5, name: 'Substack', url: 'https://cryptoalchemy29.substack.com/', icon: SubstackLogo, color: '#C7A94A' },
+  { id: 5, name: 'Substack', url: 'https://cryptoalchemy29.substack.com/', icon: 'https://substackcdn.com/image/fetch/$s_!xBQa!,w_500,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fsubstack.png', color: '#C7A94A' },
 ];
