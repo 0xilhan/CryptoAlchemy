@@ -1,4 +1,4 @@
-import { BookOpen, Code, Youtube, Mail, Rss, Heart } from 'lucide-react';
+import { BookOpen, Code, Youtube, Rss, Heart } from 'lucide-react';
 import type { Thread, SocialLink, Announcement } from './types';
 import { XLogo, DiscordLogo } from './components/icons';
 
@@ -19,16 +19,16 @@ export const YOUTUBE_SHORTS_IDS: string[] = [
 ];
 
 export const ANNOUNCEMENTS: Announcement[] = [
-    { date: 'JUL 25', text: 'New course "DeFi Security" released!', icon: '🔐' },
-    { date: 'JUL 18', text: 'Thread on modular blockchains just dropped.', icon: '🧵' },
-    { date: 'JUL 10', text: 'Cross-chain bridging video guide now live.', icon: '🎥' },
-    { date: 'JUL 01', text: 'Launched the new "Crypto Alchemy" website!', icon: '🚀' },
+  { date: 'JUL 25', text: 'New course "DeFi Security" released!', icon: '🔐' },
+  { date: 'JUL 18', text: 'Thread on modular blockchains just dropped.', icon: '🧵' },
+  { date: 'JUL 10', text: 'Cross-chain bridging video guide now live.', icon: '🎥' },
+  { date: 'JUL 01', text: 'Launched the new "Crypto Alchemy" website!', icon: '🚀' },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-    { id: 1, name: 'X', url: 'https://x.com/cryptoalchemy29', icon: XLogo, color: '#FFFFFF' },
-    { id: 2, name: 'YouTube', url: 'https://youtube.com/@cryptoalchemy29', icon: Youtube, color: '#FF0000' },
-    { id: 3, name: 'Discord', url: 'https://discord.gg/uzBWHaNGen', icon: DiscordLogo, color: '#5865F2' },
-    { id: 4, name: 'Farcaster', url: 'https://farcaster.xyz/ilhanx29', icon: Rss, color: '#8A63D2' },
-    { id: 5, name: 'Email', url: 'mailto:mail.ilhanx29@gmail.com', icon: Mail, color: '#C7A94A' },
+  { id: 1, name: 'X', url: 'https://x.com/cryptoalchemy29', icon: XLogo, color: '#FFFFFF' },
+  { id: 2, name: 'YouTube', url: 'https://youtube.com/@cryptoalchemy29', icon: Youtube, color: '#FF0000' },
+  { id: 3, name: 'Discord', url: 'https://discord.gg/uzBWHaNGen', icon: DiscordLogo, color: '#5865F2' },
+  { id: 4, name: 'Farcaster', url: 'https://farcaster.xyz/ilhanx29', icon: Rss, color: '#8A63D2' },
+  { id: 5, name: 'Substack', url: 'https://cryptoalchemy29.substack.com/', icon: BookOpen, color: '#C7A94A' },
 ];
