@@ -31,7 +31,7 @@ const itemVariants = {
 
 const ConnectSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const donateLink: SocialLink = { id: 99, name: 'Donate', url: '#', icon: Heart, color: '#C7A94A' };
+  const donateLink: SocialLink = { id: 99, name: 'Donate', url: '#', icon: Heart, color: '#4BD0A0' };
 
   return (
     <section id="connect" className="py-20 md:py-32 bg-black/20">
