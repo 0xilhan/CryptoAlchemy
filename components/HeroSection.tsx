@@ -11,7 +11,7 @@ const wordContainerVariants = {
 };
 
 const wordVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
@@ -67,7 +67,7 @@ const HeroSection: React.FC = () => {
           transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
         >
           <motion.h1
-            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight text-white relative overflow-hidden"
+            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-[1.25] text-white relative overflow-hidden"
             variants={wordContainerVariants}
             initial="hidden"
             animate="visible"
@@ -77,12 +77,12 @@ const HeroSection: React.FC = () => {
                 key={index}
                 variants={wordVariants}
                 className="inline-block mr-3 lg:mr-4"
-                animate={{ y: [0, -4, 0] }}
+                animate={{ y: [0, -5, 0] }}
                 transition={{
-                  duration: 2.4,
+                  duration: 3.2,
                   repeat: Infinity,
                   ease: 'easeInOut',
-                  delay: index * 0.08,
+                  delay: index * 0.12,
                 }}
               >
                 <span
@@ -90,10 +90,11 @@ const HeroSection: React.FC = () => {
                   style={{
                     backgroundImage:
                       'linear-gradient(90deg, #4BD0FF, #C7A94A, #FF6F61, #4BD0FF)',
-                    backgroundSize: '300% 300%',
-                    animation: 'gradientWave 6s ease infinite',
+                    backgroundSize: '400% 400%',
+                    animation: 'gradientWave 8s ease infinite',
                     WebkitBackgroundClip: 'text',
                     color: 'transparent',
+                    filter: 'drop-shadow(0 0 8px rgba(75,208,255,0.25))',
                   }}
                 >
                   {word}
@@ -103,7 +104,7 @@ const HeroSection: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-[#9CA3AF] mt-8"
+            className="text-lg md:text-xl text-[#9CA3AF] mt-10 tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 1.8 }}
