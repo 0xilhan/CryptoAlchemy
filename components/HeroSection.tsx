@@ -7,10 +7,7 @@ const wordContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.5,
-    },
+    transition: { staggerChildren: 0.05, delayChildren: 0.5 },
   },
 };
 
@@ -20,11 +17,7 @@ const wordVariants = {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: {
-      type: 'spring',
-      damping: 25,
-      stiffness: 100,
-    },
+    transition: { type: 'spring', damping: 25, stiffness: 100 },
   },
 };
 
@@ -49,7 +42,7 @@ const HeroSection: React.FC = () => {
     mouseX.set(x);
     mouseY.set(y);
   };
-  
+
   const handleMouseLeave = () => {
     mouseX.set(0.5);
     mouseY.set(0.5);
@@ -70,8 +63,7 @@ const HeroSection: React.FC = () => {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto" style={{ perspective: '1000px' }}>
-        
-        <motion.div 
+        <motion.div
           ref={ref}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -79,36 +71,60 @@ const HeroSection: React.FC = () => {
           className="p-8 md:p-12 lg:p-16 bg-black/40 backdrop-blur-lg rounded-3xl border border-[#4BD0FF]/30 shadow-[0_0_30px_rgba(75,208,255,0.2),inset_0_0_15px_rgba(75,208,255,0.1)]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
         >
-          <motion.h1 
-            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight bg-gradient-to-r from-[#4BD0FF] via-[#C7A94A] to-[#FF6F61] bg-[length:200%_200%] text-transparent bg-clip-text animate-gradientWave"
+          <motion.h1
+            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight"
             variants={wordContainerVariants}
             initial="hidden"
             animate="visible"
+            /* Gradient text via inline styles so it works without Tailwind plugins */
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, #4BD0FF, #C7A94A, #FF6F61, #4BD0FF)',
+              backgroundSize: '200% 200%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              animation: 'gradientWave 6s ease infinite',
+              // subtle glow to feel cinematic
+              textShadow: '0 0 20px rgba(75,208,255,0.15)',
+            }}
           >
-            {tagline.split(" ").map((word, index) => (
-              <motion.span key={index} variants={wordVariants} className="inline-block mr-3 lg:mr-4">
+            {tagline.split(' ').map((word, index) => (
+              <motion.span
+                key={index}
+                variants={wordVariants}
+                className="inline-block mr-3 lg:mr-4"
+                // gentle vertical wave across words
+                animate={{ y: [0, -3, 0] }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: index * 0.06,
+                }}
+              >
                 {word}
               </motion.span>
             ))}
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl text-[#9CA3AF] mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 1.8 }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 1.8 }}
           >
             Writer. Builder. Crypto storyteller.
           </motion.p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20, delay: 2.1 }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 2.1 }}
         >
           <motion.a
             href="#threads"
@@ -134,15 +150,12 @@ const HeroSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Gradient Wave Animation */}
-      <style jsx>{`
+      {/* Works in Vite/React – no styled-jsx */}
+      <style>{`
         @keyframes gradientWave {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
-        }
-        .animate-gradientWave {
-          animation: gradientWave 5s ease infinite;
         }
       `}</style>
     </section>
