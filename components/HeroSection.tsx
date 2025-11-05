@@ -1,4 +1,3 @@
-// FIX: Removed extraneous file markers from the top of the file.
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ScrollText, Clapperboard } from 'lucide-react';
@@ -12,11 +11,10 @@ const wordContainerVariants = {
 };
 
 const wordVariants = {
-  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: { type: 'spring', damping: 25, stiffness: 100 },
   },
 };
@@ -25,12 +23,9 @@ const tagline = "Empowering Crypto Self-Reliance.";
 
 const HeroSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
-
   const springConfig = { stiffness: 100, damping: 30, mass: 0.1 };
-
   const rotateX = useSpring(useTransform(mouseY, [0, 1], [-5, 5]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [0, 1], [5, -5]), springConfig);
 
@@ -42,7 +37,6 @@ const HeroSection: React.FC = () => {
     mouseX.set(x);
     mouseY.set(y);
   };
-
   const handleMouseLeave = () => {
     mouseX.set(0.5);
     mouseY.set(0.5);
@@ -50,13 +44,12 @@ const HeroSection: React.FC = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetId = href.slice(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
+    const id = href.slice(1);
+    const el = document.getElementById(id);
+    if (el) {
       const headerOffset = 80;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      const position = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: position, behavior: 'smooth' });
     }
   };
 
@@ -68,44 +61,43 @@ const HeroSection: React.FC = () => {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{ rotateX, rotateY }}
-          className="p-8 md:p-12 lg:p-16 bg-black/40 backdrop-blur-lg rounded-3xl border border-[#4BD0FF]/30 shadow-[0_0_30px_rgba(75,208,255,0.2),inset_0_0_15px_rgba(75,208,255,0.1)]"
+          className="p-8 md:p-12 lg:p-16 bg-black/40 backdrop-blur-md rounded-3xl border border-[#4BD0FF]/30 shadow-[0_0_30px_rgba(75,208,255,0.2),inset_0_0_15px_rgba(75,208,255,0.1)]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
         >
           <motion.h1
-            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight"
+            className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight text-white relative overflow-hidden"
             variants={wordContainerVariants}
             initial="hidden"
             animate="visible"
-            /* Gradient text via inline styles so it works without Tailwind plugins */
-            style={{
-              backgroundImage:
-                'linear-gradient(90deg, #4BD0FF, #C7A94A, #FF6F61, #4BD0FF)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-              animation: 'gradientWave 6s ease infinite',
-              // subtle glow to feel cinematic
-              textShadow: '0 0 20px rgba(75,208,255,0.15)',
-            }}
           >
             {tagline.split(' ').map((word, index) => (
               <motion.span
                 key={index}
                 variants={wordVariants}
                 className="inline-block mr-3 lg:mr-4"
-                // gentle vertical wave across words
-                animate={{ y: [0, -3, 0] }}
+                animate={{ y: [0, -4, 0] }}
                 transition={{
-                  duration: 2.2,
+                  duration: 2.4,
                   repeat: Infinity,
                   ease: 'easeInOut',
-                  delay: index * 0.06,
+                  delay: index * 0.08,
                 }}
               >
-                {word}
+                <span
+                  className="relative inline-block bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(90deg, #4BD0FF, #C7A94A, #FF6F61, #4BD0FF)',
+                    backgroundSize: '300% 300%',
+                    animation: 'gradientWave 6s ease infinite',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
+                  {word}
+                </span>
               </motion.span>
             ))}
           </motion.h1>
@@ -150,11 +142,10 @@ const HeroSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Works in Vite/React – no styled-jsx */}
       <style>{`
         @keyframes gradientWave {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
       `}</style>
