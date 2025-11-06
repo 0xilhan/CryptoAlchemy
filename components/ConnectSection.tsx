@@ -97,9 +97,9 @@ const ConnectSection: React.FC = () => {
           Need help? DM me 💬
         </div>
 
-        <a href="https://t.me/yourtelegramusername" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/cryptoalchemy29" target="_blank" rel="noopener noreferrer">
           <img
-            src="/static/character-dm.gif"
+            src="https://pbs.twimg.com/profile_images/1954480691242057728/Fg8Nrt_U_400x400.jpg"
             alt="DM me"
             className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[#00FFFF]/30 hover:scale-105 transition-transform duration-300 animate-float"
           />
