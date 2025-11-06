@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ScrollText, Clapperboard } from 'lucide-react';
+import { ScrollText, Clapperboard, Brain } from 'lucide-react';
 
 const wordContainerVariants = {
   hidden: { opacity: 0 },
@@ -51,6 +51,12 @@ const HeroSection: React.FC = () => {
       const position = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
       window.scrollTo({ top: position, behavior: 'smooth' });
     }
+  };
+
+  const handleKnowledgeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const event = new CustomEvent("openKnowledge");
+    window.dispatchEvent(event);
   };
 
   return (
@@ -139,6 +145,18 @@ const HeroSection: React.FC = () => {
           >
             <Clapperboard className="w-5 h-5" />
             Watch Videos
+          </motion.a>
+
+          {/* NEW KNOWLEDGE BUTTON */}
+          <motion.a
+            href="#knowledge"
+            onClick={handleKnowledgeClick}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-pointer bg-transparent border-2 border-[#00FFC6] text-[#00FFC6] font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-[#00FFC6] hover:text-[#0D0D0D] hover:shadow-[0_0_25px_#00FFC6] flex items-center gap-3"
+          >
+            <Brain className="w-5 h-5" />
+            Knowledge
           </motion.a>
         </motion.div>
       </div>
