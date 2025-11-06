@@ -13,6 +13,7 @@ import CustomCursor from './components/CustomCursor';
 import { CartProvider } from './contexts/CartContext';
 import CartModal from './components/CartModal';
 import CheckoutModal from './components/CheckoutModal';
+import KnowledgeMenu from './components/KnowledgeMenu'; // 👈 NEW IMPORT
 
 function App() {
   const [auraPosition, setAuraPosition] = React.useState({ x: 0, y: 0 });
@@ -47,6 +48,7 @@ function App() {
       </div>
       <CartModal />
       <CheckoutModal />
+      <KnowledgeMenu /> {/* 👈 Added at the end so it overlays everything */}
     </CartProvider>
   );
 }
