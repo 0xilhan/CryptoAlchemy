@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-[85vh] flex items-center justify-center overflow-hidden">
       <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto" style={{ perspective: '1000px' }}>
         <motion.div
           ref={ref}

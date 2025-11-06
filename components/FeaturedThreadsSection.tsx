@@ -84,7 +84,7 @@ const ThreadCard: React.FC<{ thread: Thread }> = ({ thread }) => {
 
 const FeaturedThreadsSection: React.FC = () => {
   return (
-    <section id="threads" className="py-20 md:py-32 overflow-hidden">
+    <section id="threads" className="py-8 md:py-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           className="font-space-grotesk text-4xl md:text-5xl font-bold text-center mb-16"
