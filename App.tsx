@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import AnnouncementsSection from './components/AnnouncementsSection';
+import CryptoPriceRibbon from './components/CryptoPriceRibbon';
 import FeaturedThreadsSection from './components/FeaturedThreadsSection';
 import VideoSection from './components/VideoSection';
 import AboutSection from './components/AboutSection';
@@ -35,7 +35,7 @@ function App() {
         <Header />
         <main>
           <HeroSection />
-          <AnnouncementsSection />
+          <CryptoPriceRibbon />
           <FeaturedThreadsSection />
           <VideoSection />
           <AboutSection />
