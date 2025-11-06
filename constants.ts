@@ -11,7 +11,7 @@ export const FEATURED_THREADS: Thread[] = [
 
 export const YOUTUBE_SHORTS_IDS: string[] = [
   'cLwZTaOnUj0',
-  'FE-ogxbI8eS87Gc8',
+  'ZtjPe1RAAMI&t',
   'sqIVwbFDj7uI7-G_',
   'mTOXg6YyUxI',
   'LrzAJ_aXEfbf2twn',
