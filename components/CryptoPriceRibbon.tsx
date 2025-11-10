@@ -4,6 +4,7 @@ interface Coin {
   id: string;
   name: string;
   symbol: string;
+  image: string; // 👈 added to include coin icons
   current_price: number;
   price_change_percentage_24h: number;
 }
@@ -34,7 +35,6 @@ const CryptoPriceRibbon: React.FC = () => {
   const allCoins = [...coins, ...coins];
 
   return (
-    // Added margin-top (mt-10 on small screens, mt-16 on medium and above)
     <section className="py-2 mt-10 md:mt-16 bg-[#0D0D0D] border-y border-gray-800">
       <div className="marquee-container overflow-hidden whitespace-nowrap">
         <div className="marquee flex animate-marquee">
@@ -49,12 +49,22 @@ const CryptoPriceRibbon: React.FC = () => {
                 className="flex-shrink-0 flex items-center space-x-4 mx-8 group"
                 data-cursor-hover
               >
+                {/* 👇 Added coin icon */}
+                <img
+                  src={coin.image}
+                  alt={coin.name}
+                  className="w-5 h-5 rounded-full"
+                  loading="lazy"
+                />
+
                 <span className="text-[#9CA3AF] text-sm font-bold">
                   {coin.symbol.toUpperCase()}
                 </span>
+
                 <span className="text-gray-400 group-hover:text-white transition-colors duration-200">
                   ${coin.current_price.toLocaleString()}
                 </span>
+
                 <span
                   className={
                     coin.price_change_percentage_24h > 0
