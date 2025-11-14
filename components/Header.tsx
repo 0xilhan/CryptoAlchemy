@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ setIsAnimationOpen }) => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              I'm working on...
+              Working On...
             </motion.button>
           </div>
 
