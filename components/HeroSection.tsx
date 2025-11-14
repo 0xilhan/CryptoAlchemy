@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ScrollText, Clapperboard, Brain } from 'lucide-react';
+import ComicBookAnimation from './ComicBookAnimation';
 
 const wordContainerVariants = {
   hidden: { opacity: 0 },
@@ -21,7 +22,12 @@ const wordVariants = {
 
 const tagline = "Empowering Crypto Self-Reliance.";
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  isAnimationOpen: boolean;
+  setIsAnimationOpen: (isOpen: boolean) => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ isAnimationOpen, setIsAnimationOpen }) => {
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -61,6 +67,11 @@ const HeroSection: React.FC = () => {
 
   return (
     <section id="hero" className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+      <ComicBookAnimation
+        text="Fixing a bug in the checkout process..."
+        isOpen={isAnimationOpen}
+        onAnimationComplete={() => setIsAnimationOpen(false)}
+      />
       <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto" style={{ perspective: '1000px' }}>
         <motion.div
           ref={ref}

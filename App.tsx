@@ -17,6 +17,7 @@ import KnowledgeMenu from './components/KnowledgeMenu'; // 👈 NEW IMPORT
 
 function App() {
   const [auraPosition, setAuraPosition] = React.useState({ x: 0, y: 0 });
+  const [isAnimationOpen, setIsAnimationOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -33,9 +34,9 @@ function App() {
       <CustomCursor />
       <div className="aura" />
       <div className="bg-[#0D0D0D] text-white selection:bg-[#c7a94a] selection:text-[#0D0D0D]">
-        <Header />
+        <Header setIsAnimationOpen={setIsAnimationOpen} />
         <main>
-          <HeroSection />
+          <HeroSection isAnimationOpen={isAnimationOpen} setIsAnimationOpen={setIsAnimationOpen} />
           <CryptoPriceRibbon />
           <FeaturedThreadsSection />
           <VideoSection />

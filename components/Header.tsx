@@ -13,7 +13,11 @@ const navLinks = [
   { name: 'Connect', href: '#connect' },
 ];
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  setIsAnimationOpen: (isOpen: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setIsAnimationOpen }) => {
   const [scrolled, setScrolled] = useState(false);
   const { cartCount, openCart } = useCart();
   const [isAnimating, setIsAnimating] = useState(false);
@@ -63,10 +67,23 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <a href="#hero" onClick={(e) => handleSmoothScroll(e, '#hero')} className="flex items-center gap-2 group" data-cursor-hover>
-            
-            <span className="font-space-grotesk font-bold text-xl text-white">Crypto Alchemy</span>
-          </a>
+          <div className="flex items-center">
+            <a href="#hero" onClick={(e) => handleSmoothScroll(e, '#hero')} className="group" data-cursor-hover>
+              <span className="font-space-grotesk font-bold text-xl text-white">Crypto Alchemy</span>
+            </a>
+            <motion.button
+              className="font-bangers text-lg text-white bg-red-600 px-2 py-0.5 rounded-md shadow-lg rotate-[-3deg] hover:rotate-[-6deg] transition-transform duration-200 ml-4"
+              style={{
+                textShadow:
+                  '2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 0px 0px #000, -2px 0px 0px #000, 0px 2px 0px #000, 0px -2px 0px #000',
+              }}
+              onClick={() => setIsAnimationOpen(true)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              Working On...
+            </motion.button>
+          </div>
 
           <div className="flex items-center gap-6">
             <nav className="hidden md:flex items-center space-x-6">
