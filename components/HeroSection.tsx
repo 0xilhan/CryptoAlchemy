@@ -68,7 +68,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ isAnimationOpen, setIsAnimati
   return (
     <section id="hero" className="relative h-[85vh] flex items-center justify-center overflow-hidden">
       <ComicBookAnimation
-        text="Fixing a bug in the checkout process..."
+        text={"Fixing a bug in the\ncheckout process..."}
         isOpen={isAnimationOpen}
         onAnimationComplete={() => setIsAnimationOpen(false)}
       />

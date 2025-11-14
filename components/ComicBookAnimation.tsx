@@ -48,13 +48,20 @@ const ComicBookAnimation: React.FC<ComicBookAnimationProps> = ({ text, isOpen, o
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          className="absolute top-0 left-0 w-full h-1/2 flex items-center justify-center pointer-events-none z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 1 } }}
-        >
+        <>
           <motion.div
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 1 } }}
+          >
+            <motion.div
             className="relative"
             variants={containerVariants}
             initial="hidden"
@@ -73,24 +80,30 @@ const ComicBookAnimation: React.FC<ComicBookAnimationProps> = ({ text, isOpen, o
                 transition: { duration: 0.5, delay: 0.2 },
               }}
             />
-            {text.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                className="font-bangers text-6xl md:text-8xl lg:text-9xl text-white"
-                style={{
-                  textShadow:
-                    '4px 4px 0px #000, -4px -4px 0px #000, 4px -4px 0px #000, -4px 4px 0px #000, 4px 0px 0px #000, -4px 0px 0px #000, 0px 4px 0px #000, 0px -4px 0px #000',
-                  display: 'inline-block',
-                  margin: '0 -0.05em',
-                  transformOrigin: 'bottom center',
-                }}
-                variants={letterVariants}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
+            {text.split('\n').map((line, lineIndex) => (
+              <div key={lineIndex} className="block">
+                {line.split('').map((char, charIndex) => (
+                  <motion.span
+                    key={charIndex}
+                    className="font-bangers text-6xl md:text-8xl lg:text-9xl text-white"
+                    style={{
+                      textShadow:
+                        '4px 4px 0px #000, -4px -4px 0px #000, 4px -4px 0px #000, -4px 4px 0px #000, 4px 0px 0px #000, -4px 0px 0px #000, 0px 4px 0px #000, 0px -4px 0px #000',
+                      display: 'inline-block',
+                      margin: '0 -0.05em',
+                      transformOrigin: 'bottom center',
+                      letterSpacing: '0.1em',
+                    }}
+                    variants={letterVariants}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </motion.span>
+                ))}
+              </div>
             ))}
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
