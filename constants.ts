@@ -3,7 +3,7 @@ import type { Thread, SocialLink, Announcement } from './types';
 import { XLogo, DiscordLogo, SubstackLogo } from './components/icons';
 
 export const FEATURED_THREADS: Thread[] = [
-  { id: 1, title: 'How $CRC is trying to make possible the core mission of Bitcoin', tag: 'Bitcoin', url: 'https://x.com/cryptoalchemy29/status/1967625717329379833', thumbnailUrl: 'https://pbs.twimg.com/media/G05dwrvWEAESMWv?format=jpg&name=medium' },
+  { id: 1, title: 'How I connect publicly available data to generate insider-level signals.', tag: 'DYOR', url: 'https://x.com/cryptoalchemy29/status/1990338411107099010', thumbnailUrl: 'https://pbs.twimg.com/media/G58aOzwaUAAtFUV?format=jpg&name=medium' },
   { id: 2, title: 'Grinding for Airdrops, but NO WIN-WIN ?? 😔 Here is the remedy', tag: 'Smart Grinding', url: 'https://x.com/cryptoalchemy29/status/1753305066721964283', thumbnailUrl: 'https://pbs.twimg.com/media/GFT9ql2bEAA6wjf?format=jpg&name=medium' },
   { id: 3, title: 'Unfollow Them Immediately and You will Start Making Money.', tag: 'Self Reliance', url: 'https://x.com/cryptoalchemy29/status/1785668081861238965', thumbnailUrl: 'https://pbs.twimg.com/media/GMfxdfCWoAAjBat?format=jpg&name=medium' },
   { id: 4, title: 'Spamming Articles About Protocols Can Make You Money But Not wealth.', tag: 'Strategy', url: 'https://x.com/cryptoalchemy29/status/1968166164715991294', thumbnailUrl: 'https://pbs.twimg.com/media/G1BUr3RXUAAW1Ol?format=jpg&name=medium' },
