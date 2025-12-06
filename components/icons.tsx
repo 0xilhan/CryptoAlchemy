@@ -44,3 +44,17 @@ export const SubstackLogo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => 
     <path d="M22.539 5.242H1.46V1.46h21.08v3.782zM1.46 11.475h21.08v-3.782H1.46v3.782zm0 6.233h21.08v-3.782H1.46v3.782zM1.46 22.54h14.053v-3.782H1.46v3.782z"/>
   </svg>
 );
+
+// Custom Icons (put these above the component or in a separate file)
+
+const FarcasterIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M12 2c5.52 0 10 3.98 10 9.48 0 2.97-1.38 5.6-3.6 7.32l.58 2.7c.12.54-.42.98-.93.76L14 20.8c-.64.12-1.3.2-2 .2-5.52 0-10-3.98-10-9.48C2 5.98 6.48 2 12 2Z" />
+  </svg>
+);
+
+const SubstackIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M3 4h18v2H3V4Zm0 4h18v2H3V8Zm0 4h18v8l-9-4-9 4v-8Z" />
+  </svg>
+);
