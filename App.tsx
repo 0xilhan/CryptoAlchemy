@@ -6,7 +6,7 @@ import FeaturedThreadsSection from './components/FeaturedThreadsSection';
 import VideoSection from './components/VideoSection';
 import AboutSection from './components/AboutSection';
 import ProductsSection from './components/ProductsSection';
-import ConnectSection from './components/ConnectSection';
+import InteractiveCircle from './components/InteractiveCircle';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import { CartProvider } from './contexts/CartContext';
@@ -41,7 +41,7 @@ function App() {
           <VideoSection />
           <AboutSection />
           <ProductsSection />
-          <ConnectSection />
+          <InteractiveCircle />
         </main>
         <Footer />
       </div>
