@@ -5,6 +5,19 @@ import type { SocialLink } from '../types';
 import DonateModal from './DonateModal';
 import { Heart, Zap } from 'lucide-react';
 
+// Custom Icons (exact, accurate versions)
+const FarcasterIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M12 2c5.52 0 10 3.98 10 9.48 0 2.97-1.38 5.6-3.6 7.32l.58 2.7c.12.54-.42.98-.93.76L14 20.8c-.64.12-1.3.2-2 .2-5.52 0-10-3.98-10-9.48C2 5.98 6.48 2 12 2Z" />
+  </svg>
+);
+
+const SubstackIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M3 4h18v2H3V4Zm0 4h18v2H3V8Zm0 4h18v8l-9-4-9 4v-8Z" />
+  </svg>
+);
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -14,7 +27,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
@@ -24,7 +37,21 @@ const itemVariants = {
 
 const ConnectSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const donateLink: SocialLink = { id: 99, name: 'Donate', url: '#', icon: Heart, color: '#4BD0A0' };
+
+  // Replace inaccurate icons
+  const fixedLinks = SOCIAL_LINKS.map((l) => {
+    if (l.name === "Farcaster") return { ...l, icon: FarcasterIcon };
+    if (l.name === "Substack") return { ...l, icon: SubstackIcon };
+    return l;
+  });
+
+  const donateLink: SocialLink = {
+    id: 999,
+    name: "Donate",
+    url: "#",
+    icon: Heart,
+    color: "#4BD0A0",
+  };
 
   return (
     <section id="connect" className="relative py-24 bg-black/20">
@@ -32,13 +59,13 @@ const ConnectSection: React.FC = () => {
 
         {/* Title */}
         <motion.h2
-          className="font-space-grotesk text-4xl md:text-5xl font-semibold mb-4 flex items-center justify-center gap-2"
+          className="font-space-grotesk text-4xl md:text-5xl font-semibold mb-3 flex items-center justify-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Zap className="w-8 h-8 text-yellow-400/90" />
-          <span className="tracking-tight">Join the Circle</span>
+          <Zap className="w-7 h-7 text-yellow-400/90" />
+          Join the Circle
         </motion.h2>
 
         {/* Subtitle */}
@@ -48,54 +75,55 @@ const ConnectSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Stay connected across platforms. Follow, reach out, or support the work.
+          Connect across platforms. Follow, explore, or support the mission.
         </motion.p>
 
-        {/* Social Links Grid */}
+        {/* Card Grid */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
         >
-          {[...SOCIAL_LINKS, donateLink].map((link) => (
+          {[...fixedLinks, donateLink].map((link) => (
             <motion.div key={link.id} variants={itemVariants}>
               <a
                 href={link.url}
                 onClick={
-                  link.name === 'Donate'
+                  link.name === "Donate"
                     ? (e) => {
                         e.preventDefault();
                         setIsModalOpen(true);
                       }
                     : undefined
                 }
-                target={link.name === 'Donate' ? '_self' : '_blank'}
+                target={link.name === "Donate" ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 className="
-                  group block rounded-xl 
-                  bg-white/[0.03] 
-                  backdrop-blur-md 
-                  border border-white/10 
+                  group block rounded-2xl h-full
+                  bg-white/[0.025] shadow-sm backdrop-blur-md
+                  border border-white/10
                   hover:border-cyan-400/40
-                  hover:shadow-[0_0_12px_rgba(0,255,255,0.15)]
+                  hover:shadow-[0_0_18px_rgba(0,255,255,0.15)]
                   transition-all duration-300
                   hover:-translate-y-1
                 "
               >
-                <div className="px-6 py-8 flex flex-col items-center">
+                <div className="px-6 py-10 flex flex-col items-center">
+
+                  {/* Icon */}
                   <link.icon
                     className="
-                      w-8 h-8 mb-4 
-                      opacity-90 
+                      w-9 h-9 mb-4 opacity-90 
                       group-hover:opacity-100 
                       transition-all duration-300 
-                      group-hover:scale-110
+                      group-hover:scale-[1.15]
                     "
                     style={{ color: link.color }}
                   />
-                  <span className="text-white font-medium tracking-wide">
+
+                  {/* Label */}
+                  <span className="text-white font-medium tracking-wide text-lg">
                     {link.name}
                   </span>
                 </div>
@@ -106,37 +134,6 @@ const ConnectSection: React.FC = () => {
       </div>
 
       <DonateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Floating DM section */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start group">
-        <div className="bg-[#0F1720]/90 text-white text-xs px-3 py-1.5 rounded-md mb-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10">
-          Need help? DM
-        </div>
-
-        <a href="https://x.com/cryptoalchemy29" target="_blank">
-          <img
-            src="https://pbs.twimg.com/profile_images/1954480691242057728/Fg8Nrt_U_400x400.jpg"
-            className="
-              w-14 h-14 rounded-full 
-              border border-cyan-400/30 
-              hover:scale-105 
-              transition-transform duration-300 
-              animate-float
-            "
-            alt="DM"
-          />
-        </a>
-
-        <style jsx>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-          }
-          .animate-float {
-            animation: float 3.5s ease-in-out infinite;
-          }
-        `}</style>
-      </div>
     </section>
   );
 };
